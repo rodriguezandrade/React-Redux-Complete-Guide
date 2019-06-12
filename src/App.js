@@ -24,7 +24,8 @@ const App = props => {
         { name: 'pn', age: '20' },
         { name: 'ud', age: '20' },
         { name: 'pinu', age: '20' }
-      ]
+      ],
+      otherState: personState.otherState
     });
   }
 
