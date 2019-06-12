@@ -13,30 +13,43 @@ const App = props => {
     otherState: 'some other value'
   });
 
-  console.log(personState);
-  
-  const switchNameHandler = () => {
-    console.log('this');
+  const [otherState, setOtherState] = useState('some other value');
+
+  console.log(personState, otherState);
+
+  const switchNameHandler = (newName) => {
     // do not do this  this.state.persons[0].name = 'aa perrro';
+
     setPersonsState({
       persons: [
-        { name: 'libre', age: '20' },
+        { name: newName, age: '20' },
         { name: 'pn', age: '20' },
         { name: 'ud', age: '20' },
         { name: 'pinu', age: '20' }
       ],
       otherState: personState.otherState
     });
+  
   }
+ // <button onClick={switchNameHandler.bind(this, 'Jonathan')}>Switch Name</button>
 
   return (
     <div className="App">
       <h1> Hola test</h1>
-      <button onClick={switchNameHandler}>Switch Name</button>
-      <Person name={personState.persons[0].name} age={personState.persons[0].age} />
-      <Person name={personState.persons[1].name} age={personState.persons[1].age} />
-      <Person name={personState.persons[2].name} age={personState.persons[2].age} />
-      <Person name={personState.persons[3].name} age={personState.persons[3].age}> My Hobbies: Racing</Person>
+      <button onClick={ () => switchNameHandler('monky')}>Switch Name</button>
+      <Person
+        name={personState.persons[0].name}
+        age={personState.persons[0].age} />
+      <Person
+        name={personState.persons[1].name}
+        age={personState.persons[1].age} />
+      <Person
+        name={personState.persons[2].name}
+        age={personState.persons[2].age} />
+      <Person
+        click={switchNameHandler.bind(this, 'Mi novia')}
+        name={personState.persons[3].name}
+        age={personState.persons[3].age}> My Hobbies: Racing</Person>
     </div>
   );
 
