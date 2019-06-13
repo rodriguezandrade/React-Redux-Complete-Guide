@@ -14,12 +14,10 @@ const App = props => {
   });
 
   const [otherState, setOtherState] = useState('some other value');
-
   console.log(personState, otherState);
 
   const switchNameHandler = (newName) => {
     // do not do this  this.state.persons[0].name = 'aa perrro';
-
     setPersonsState({
       persons: [
         { name: newName, age: '20' },
@@ -31,7 +29,6 @@ const App = props => {
     });
 
   }
-
 
   const nameChangedHandler = (event) => {
     setPersonsState({
