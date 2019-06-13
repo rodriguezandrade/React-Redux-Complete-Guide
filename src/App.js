@@ -29,15 +29,21 @@ class App extends Component {
 
   // }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Pancho', age: '21' },
-        { name: 'Candita', age: '22' },
-        { name: 'Tacuazin', age: '23' },
-        { name: event.target.value, age: '24' }
-      ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
+
   }
 
   state2 = {
@@ -48,7 +54,7 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   }
@@ -67,10 +73,10 @@ class App extends Component {
     console.log(doesShow);
     this.setState({
       persons: [
-        { name: 'jonathan', age: "21" },
-        { name: 'Hola', age: "22" },
-        { name: 'Otro', age: "23" },
-        { name: 'que pedo mae', age: "23" }
+        { id: "asf1", name: 'jonathan', age: "21" },
+        { id: "asf2", name: 'Hola', age: "22" },
+        { id: "asf3", name: 'Otro', age: "23" },
+        { id: "asf4", name: 'que pedo mae', age: "23" }
       ],
       otherState: 'some other value',
       showPersons: !doesShow
@@ -95,7 +101,8 @@ class App extends Component {
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-            />
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div >
       )
