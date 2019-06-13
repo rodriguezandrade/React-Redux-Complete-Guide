@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import Exercise from './Person/Exercise';
+import Radium, { StyleRoot } from 'radium';
 import person from './Person/Person';
 class App extends Component {
   state = {
@@ -88,7 +89,11 @@ class App extends Component {
     font: 'inherit',
     border: '1px solid blue',
     padding: '8px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: 'lightgreen',
+      color: 'black'
+    }
   }
 
   render() {
@@ -97,29 +102,35 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
+            this.style = {
+              '@media (min-width: 500px)': {
+                width: '450px'
+              }
+            }
+            return (<Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
               key={person.id}
               changed={(event) => this.nameChangedHandler(event, person.id)} />
+            )
           })}
         </div >
       )
     }
 
     return (
-      <div className="App" >
-        <h1> Hola test</h1>
-        <button
-          style={this.style}
-          onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
+        <div className="App" >
+          <h1> Hola test</h1>
+          <button
+            style={this.style}
+            onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
 
-        <button
-          style={this.style}
-          onClick={this.togglePersonsHandler}>Okay</button>
-        {persons}
-      </div >
+          <button
+            style={this.style}
+            onClick={this.togglePersonsHandler}>Okay</button>
+          {persons}
+        </div >
     );
   }
   //   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, ' que ondas como estas?'));
