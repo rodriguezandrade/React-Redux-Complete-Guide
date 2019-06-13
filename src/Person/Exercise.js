@@ -4,12 +4,12 @@ import './Person.css';
 const exercise = (props) => {
     return (
         <div>
-        <p>********************************************************* Excersice *********************************************************</p>
-        <input />
-        <p> Parrafo 1= { props.input } </p>
-        <input />
-        <p> Parrafo 2 = {props.input2}</p>
-        </div> 
+            <p>********************************************************* Excersice *********************************************************</p>
+            <input onChange={props.changed} value={props.input}/>
+            <p > Usuario = {props.input}  </p>
+            <input />
+            <p> Contrasena 2 = {props.input2}</p>+
+        </div>
     )
 }
 
