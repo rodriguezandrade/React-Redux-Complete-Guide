@@ -3,7 +3,7 @@ import style from "../../Components/Persons/Person/Person"
 const cockpit = (props) => {
     return (
         <div>
-            <h1> Hola test</h1>
+            <h1>{props.title}</h1>
             <button
                 className={style.Button}
                 onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
