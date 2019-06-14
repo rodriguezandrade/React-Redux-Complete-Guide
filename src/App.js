@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import style from './App.module.css';
 import Person from './Person/Person';
-import Exercise from './Person/Exercise';
-import Radium, { StyleRoot } from 'radium';
-import person from './Person/Person';
+
 class App extends Component {
   state = {
     persons: [
@@ -84,18 +82,6 @@ class App extends Component {
     })
   }
 
-  style = {
-    backgroundColor: 'white',
-    font: 'inherit',
-    border: '1px solid blue',
-    padding: '8px',
-    cursor: 'pointer',
-    ':hover': {
-      backgroundColor: 'lightgreen',
-      color: 'black'
-    }
-  }
-
   render() {
     let persons = null;
     if (this.state.showPersons) {
@@ -120,17 +106,17 @@ class App extends Component {
     }
 
     return (
-        <div className="App" >
-          <h1> Hola test</h1>
-          <button
-            style={this.style}
-            onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
+      <div className={style.App} >
+        <h1> Hola test</h1>
+        <button
+          className={style.Button}
+          onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
 
-          <button
-            style={this.style}
-            onClick={this.togglePersonsHandler}>Okay</button>
-          {persons}
-        </div >
+        <button
+
+          onClick={this.togglePersonsHandler}>Okay</button>
+        {persons}
+      </div >
     );
   }
   //   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, ' que ondas como estas?'));

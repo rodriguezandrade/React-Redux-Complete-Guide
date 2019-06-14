@@ -31,3 +31,19 @@
     transform: rotate(360deg);
   }
 }
+
+.Button{
+  background-color: red;
+  font: inherit;
+  border: '1px solid blue';
+  padding: '8px';
+  cursor: 'pointer';
+}
+
+.App button{
+  border: 1px solid blue;
+  padding: 16px;
+  background-color: green;
+  font:inherit;
+  color: white;
+}
