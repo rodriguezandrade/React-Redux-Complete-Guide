@@ -1,7 +1,13 @@
 import React from 'react';
-import  styles from './Person.css';
- 
+import styles from './Person.css';
+
 const person = (props) => {
+    const rnd = Math.random();
+
+    if (rnd > 0.7) {
+        throw new Error('Algo paso mal');
+    }
+
     return (
         <div className={styles.Person}>
             <p onClick={props.click}> Soy {props.name} y tengo {props.age}</p>
