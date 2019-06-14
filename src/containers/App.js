@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import style from './App.module.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../Components/Persons/Persons';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -15,19 +16,19 @@ class App extends Component {
     showPersons: false
   };
 
-  // switchNameHandler = (newName) => {
-  //   // do not do this  this.state.persons[0].name = 'aa perrro';
-  //   this.setState({
-  //     persons: [
-  //       { name: newName, age: '20' },
-  //       { name: 'pn', age: '20' },
-  //       { name: 'ud', age: '20' },
-  //       { name: 'pinu', age: '20' }
-  //     ],
-  //     otherState: this.state.otherState
-  //   });
+  switchNameHandler = (newName) => {
+    // do not do this  this.state.persons[0].name = 'aa perrro';
+    this.setState({
+      persons: [
+        { name: newName, age: '20' },
+        { name: 'pn', age: '20' },
+        { name: 'ud', age: '20' },
+        { name: 'pinu', age: '20' }
+      ],
+      otherState: this.state.otherState
+    });
 
-  // }
+  }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -88,31 +89,19 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-
-            return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  name={person.name}
-                  age={person.age}
-                  key={person.id}
-                  changed={(event) => this.nameChangedHandler(event, person.id)} />
-              </ErrorBoundary>
-            )
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}>
+          </Persons>
         </div >
       )
     }
 
     return (
       <div className={style.App} >
-        <h1> Hola test</h1>
-        <button
-          className={style.Button}
-          onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
-        <button
-          onClick={this.togglePersonsHandler}>Okay</button>
+        <Cockpit
+          toogle={this.togglePersonsHandler}></Cockpit>
         {persons}
       </div >
     );
