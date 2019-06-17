@@ -5,6 +5,11 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props, '[App.js] constructor');
+  }
+
   state = {
     persons: [
       { name: 'jonathan', age: "21" },

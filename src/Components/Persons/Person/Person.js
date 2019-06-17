@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './Person.css';
 
-const person = (props) => {
-    // const rnd = Math.random();
+export class Person extends Component {
 
-    // if (rnd > 0.7) {
-    //     throw new Error('Algo paso mal');
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('getSnapshotBeforeUpdate');
+        return { message: 'snapshot' };
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate');
+        console.log(snapshot);
+    }
+
+    // componentWillReceiveProps(props) {
+    //     console.log('componentWillReceiveProps', props);
     // }
 
-    return (
-        <div className={styles.Person}>
-            <p onClick={props.click}> Soy {props.name} y tengo {props.age}</p>
-            <p> {props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
+    render() {
+        return (
+            <div className={styles.Person}>
+                <p onClick={this.props.click}> Soy {this.props.name} y tengo {this.props.age}</p>
+                <p> {this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </div>
+        )
+    }
 }
 
-export default person;
+export default Person;
