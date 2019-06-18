@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Person.css';
+import Aux from '../../../hoc/Aux';
+import aux from '../../../hoc/Aux';
 
 export class Person extends Component {
 
@@ -18,18 +20,28 @@ export class Person extends Component {
         console.log(snapshot);
     }
 
+    // componentWillUpdate() {
+
+    // }
+
     // componentWillReceiveProps(props) {
     //     console.log('componentWillReceiveProps', props);
     // }
 
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+    }
+
     render() {
         return (
-            <div className={styles.Person}>
-                <p onClick={this.props.click}> Soy {this.props.name} y tengo {this.props.age}</p>
-                <p> {this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
-            </div>
-        )
+            <Aux>
+                <div className={styles.Person}>
+                    <p onClick={this.props.click}> Soy {this.props.name} y tengo {this.props.age}</p>
+                    <p> {this.props.children}</p>
+                    <input type="text" onChange={this.props.changed} value={this.props.name} />
+                </div>
+            </Aux>
+        );
     }
 }
 

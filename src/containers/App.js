@@ -3,8 +3,10 @@ import style from './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Cockpit from '../Components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     console.log(props, '[App.js] constructor');
@@ -18,7 +20,8 @@ class App extends Component {
       { name: 'que pedo mae', age: "23" }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
 
   switchNameHandler = (newName) => {
@@ -30,7 +33,8 @@ class App extends Component {
         { name: 'ud', age: '20' },
         { name: 'pinu', age: '20' }
       ],
-      otherState: this.state.otherState
+      otherState: this.state.otherState,
+      showCockpit: true
     });
 
   }
@@ -85,8 +89,34 @@ class App extends Component {
         { id: "asf4", name: 'que pedo mae', age: "23" }
       ],
       otherState: 'some other value',
-      showPersons: !doesShow
+      showPersons: !doesShow,
+      showCockpit: true
     })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('should Component Update');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('ComponentDidUpdate');
+
+  }
+
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+
   }
 
   render() {
@@ -104,12 +134,16 @@ class App extends Component {
     }
 
     return (
-      <div className={style.App} >
-        <Cockpit
-          title={this.props.appTittle}
-          toogle={this.togglePersonsHandler}></Cockpit>
+      <WithClass classes={style.App}>
+        <button onClick={() => { this.setState({ showCockpit: false }) }} > Remove Cockpit</button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTittle}
+            toogle={this.togglePersonsHandler}
+          />
+        ) : null}
         {persons}
-      </div >
+      </WithClass>
     );
   }
   //   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, ' que ondas como estas?'));
