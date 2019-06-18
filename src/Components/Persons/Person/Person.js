@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Person.css';
-import Aux from '../../../hoc/Aux';
-import aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Auxiliar';
+
 
 export class Person extends Component {
 
