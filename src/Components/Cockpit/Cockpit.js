@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from "../../Components/Persons/Person/Person"
 const cockpit = (props) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const toggleBtnRef = useRef(null);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         console.log('use Efect');
-        setTimeout(() => {
-            alert('Save data to cloud')
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('Save data to cloud')
+        // }, 1000);
+
+        toggleBtnRef.current.click();
 
         return () => {
             console.log('cleanup worl in useEffect');
@@ -27,10 +31,11 @@ const cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <button
-                className={style.Button}
-                onClick={() => this.switchNameHandler('monky')}>Switch Name</button>
-            <button
-                onClick={props.toogle}>Okay</button>
+                ref={toggleBtnRef}
+                onClick={props.toogle}
+            >Okay</button>
+
+            <button onClick={props.login}>Log in</button>
         </div>
     );
 }

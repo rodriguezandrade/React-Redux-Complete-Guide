@@ -5,6 +5,15 @@ import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types';
 
 export class Person extends Component {
+    constructor(props) {
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
+    componentDidMount() {
+        // document.querySelector('input').focus();
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate');
@@ -36,9 +45,16 @@ export class Person extends Component {
     render() {
         return (
             <Aux>
+                {this.props.isAuth ? <p>Authenticated!</p> : <p>Please Log in!</p>}
+
                 <p onClick={this.props.click}> Soy {this.props.name} y tengo {this.props.age}</p>
                 <p> {this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
+                <input
+                    // ref={(inputEl) => { this.inputElement = inputEl }}
+                    ref={this.inputElementRef}
+                    type="text"
+                    onChange={this.props.changed}
+                    value={this.props.name} />
             </Aux>
         );
     }
