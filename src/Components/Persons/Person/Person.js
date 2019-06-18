@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Person.css';
 import Aux from '../../../hoc/Auxiliar';
 import withClass from '../../../hoc/withClass';
-
+import PropTypes from 'prop-types';
 
 export class Person extends Component {
 
@@ -43,5 +43,13 @@ export class Person extends Component {
         );
     }
 }
+
+// eslint-disable-next-line react/no-typos
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default withClass(Person, styles.Person);

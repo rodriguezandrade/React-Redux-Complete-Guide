@@ -14,10 +14,10 @@ class App extends Component {
 
   state = {
     persons: [
-      { name: 'jonathan', age: "21" },
-      { name: 'Hola', age: "22" },
-      { name: 'Otro', age: "23" },
-      { name: 'que pedo mae', age: "23" }
+      { name: 'jonathan', age: 21 },
+      { name: 'Hola', age: 22 },
+      { name: 'Otro', age: 23 },
+      { name: 'que pedo mae', age: 23 }
     ],
     otherState: 'some other value',
     showPersons: false,
@@ -29,10 +29,10 @@ class App extends Component {
     // do not do this  this.state.persons[0].name = 'aa perrro';
     this.setState({
       persons: [
-        { name: newName, age: '20' },
-        { name: 'pn', age: '20' },
-        { name: 'ud', age: '20' },
-        { name: 'pinu', age: '20' }
+        { name: newName, age: 20 },
+        { name: 'pn', age: 20 },
+        { name: 'ud', age: 20 },
+        { name: 'pinu', age: 20 }
       ],
       otherState: this.state.otherState,
       showCockpit: true
@@ -88,10 +88,10 @@ class App extends Component {
     console.log(doesShow);
     this.setState({
       persons: [
-        { id: "asf1", name: 'jonathan', age: "21" },
-        { id: "asf2", name: 'Hola', age: "22" },
-        { id: "asf3", name: 'Otro', age: "23" },
-        { id: "asf4", name: 'que pedo mae', age: "23" }
+        { id: "asf1", name: 'jonathan', age: 21 },
+        { id: "asf2", name: 'Hola', age: 22 },
+        { id: "asf3", name: 'Otro', age: 23 },
+        { id: "asf4", name: 'que pedo mae', age: 23 }
       ],
       otherState: 'some other value',
       showPersons: !doesShow,
