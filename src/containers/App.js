@@ -3,7 +3,7 @@ import style from './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Cockpit from '../Components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
 
 class App extends Component {
 
@@ -134,7 +134,7 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={style.App}>
+      <div>
         <button onClick={() => { this.setState({ showCockpit: false }) }} > Remove Cockpit</button>
         {this.state.showCockpit ? (
           <Cockpit
@@ -143,10 +143,10 @@ class App extends Component {
           />
         ) : null}
         {persons}
-      </WithClass>
+      </div>
     );
   }
   //   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, ' que ondas como estas?'));
 }
 
-export default App;
+export default withClass(App, style.App);
