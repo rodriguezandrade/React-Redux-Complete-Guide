@@ -1,8 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import style from "../../Components/Persons/Person/Person"
+import React, { useEffect, useRef, useContext } from 'react';
+import style from "../../Components/Persons/Person/Person";
+import AuthContext from '../../context/auth-context';
+
 const cockpit = (props) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const toggleBtnRef = useRef(null);
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const authContext = useContext(AuthContext);
+    console.log('authContext.authenticated ?', authContext.authenticated);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
@@ -34,8 +40,7 @@ const cockpit = (props) => {
                 ref={toggleBtnRef}
                 onClick={props.toogle}
             >Okay</button>
-
-            <button onClick={props.login}>Log in</button>
+            <button onClick={authContext.login}>Log in</button>
         </div>
     );
 }

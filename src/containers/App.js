@@ -160,7 +160,6 @@ class App extends Component {
             <Cockpit
               title={this.props.appTittle}
               toogle={this.togglePersonsHandler}
-              login={this.loginHandler}
             />
           ) : null}
           {persons}
